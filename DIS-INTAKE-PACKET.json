@@ -1,0 +1,65 @@
+{
+  "allowed": true,
+  "code": "READY_FOR_SSA_001",
+  "snapshot_sha256": "1fffd8942a6d0bed9ae011ba823f99ac690d9dc8a891264826eec39b7abceb09",
+  "packet": {
+    "schema": "DIS-PROJECT/v1",
+    "project": "ООО «Сафка»",
+    "scope": "Концепция всей главной страницы первого релиза",
+    "goal": "Представить производителя функциональных продуктов питания и связать разные линейки, каталог и сценарий сотрудничества в одной главной странице.",
+    "stage": "intake",
+    "route": [
+      "intake",
+      "discovery",
+      "competitive_research",
+      "semantic_architecture",
+      "prototype",
+      "reference_intelligence",
+      "art_direction",
+      "frankenstein",
+      "ui_kit",
+      "fa01",
+      "fa02",
+      "visual_concept"
+    ],
+    "prompt": {
+      "path": "prompts/dis-project-bootstrap-v1.md",
+      "sha256": "eafbaffa287d89e236b99c990b89508780b1d3736a9cd494e83fcb2acfcfca55",
+      "full_text": "# DIS — Project Bootstrap v1.0 (entry prompt)\n\nЗапусти новый проект в DIS. Конечная цель, указанная в сообщении, НЕ означает разрешения немедленно создавать исследование, прототип, изображение, Figma или код.\n\n1. Прочитай реальные действующие документы DIS (AGENTS.md, PCS-001, DEC-001, STG-001, HCA-001 и соответствующие stage prompts), а также приложенные оригинальные материалы клиента. Недоступные источники отметь как NOT_VERIFIED. Не представляй open PR как утверждённую методологию.\n2. Пройди только Project Bootstrap / Intake: зафиксируй проект, scope, конечную цель, реальные исходные файлы, факты и гипотезы, рекомендуемый маршрут этапов. Ранее выполненный проект продолжай через recovery, не стирай его историю.\n3. Подготовь FIRST Stage Start Packet: цель, scope, версии/контрольные суммы источников, полный действующий универсальный промпт, рекомендации по инструментам и формату, варианты выбора автора, обязательные checks и риски. Это ПРЕДЛОЖЕНИЕ, не производство этапа.\n4. До начала любого нового этапа получи отдельное SSA-001 для точного пакета и выбранных вариантов. Не повторяй уже закреплённый выбор. До производства проверь DEC-001 и применимые gates. После производства проверь реальный артефакт и запроси отдельное SRA-001. Следующий этап автоматически НЕ начинается.\n5. Для первого Discovery добавь RQC-001 и самостоятельный критический второй проход ДО показа отчёта. Не выдумывай интервью, оценки качества, источники или коммерческие обещания.\n6. Не считай промпт полноценной технической защитой: если внешняя проверка/подпись не подключены, честно укажи NOT_CONNECTED. Контролируемый маршрут в репозитории и native ChatGPT — разные среды.\n\nСЕЙЧАС: выполни только Intake и подготовь Stage Start Packet для согласования. Не начинай полноценный Discovery и не разрабатывай HERO, пока соответствующий этап явно не согласован.\n"
+    },
+    "original_sources": [
+      {
+        "id": "SRC-01",
+        "kind": "client_baseline",
+        "path": "attachments/55f1978f-0411-436a-900c-0b765f269da6/Сафка_Первоначальное ТЗ.docx",
+        "sha256": "2de82fab35724ec6442f17c92e5a182de213ebf1607e1432fac837dd787941a1",
+        "locator": "§1–3 и заключительные требования"
+      },
+      {
+        "id": "SRC-02",
+        "kind": "product_presentation",
+        "path": "attachments/598a1993-1c5d-4231-8577-5b8dfc971c07/Сафка мясокостные-бульоны_продуктовая презентация 2026.pdf",
+        "sha256": "7e59ca369944a328bdae0499a8909016b2d1d1408093ef2196ee405001074c9f",
+        "locator": "Слайды 1–16"
+      },
+      {
+        "id": "INTAKE-0.1",
+        "kind": "intake_preparation",
+        "path": "Sofka/REFERENCE-PREP.md",
+        "sha256": "8a5e2b6cd0d431540ea14dfa94720763683a0688feb0c6c090dc71b0d663cda9",
+        "locator": "Сопоставление источников, вводные чата и бриф референсов"
+      }
+    ],
+    "prior_approved_stage_artifacts": [],
+    "author_choices": {},
+    "required_choices": [],
+    "author_additions": "",
+    "protocol": {
+      "start": "SSA-001 required for this exact snapshot",
+      "result": "SRA-001 required for checked artifact, separately",
+      "execution": "DEC-001 and stage-specific gate before production"
+    }
+  },
+  "missing_choices": [],
+  "warning": "Snapshot prepared only. SSA signature, DEC and SRA not granted; no native-tool gateway."
+}
