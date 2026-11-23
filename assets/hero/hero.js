@@ -9,6 +9,7 @@ const notice = hero.querySelector('.film-notice');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const useVideoFrames = typeof film.requestVideoFrameCallback === 'function';
 const gripTime = 0.80;
+const fullFrameTime = 4.45;
 let state = 'idle';
 let playbackAttempt = 0;
 let frameRequest = null;
@@ -29,14 +30,27 @@ function revealFilm() {
   cover.inert = true;
 }
 
-function watchGrip() {
+function watchOpening() {
+  if (frameRequest !== null || hero.classList.contains('is-film-wide')) return;
+
   const onFrame = (_, metadata) => {
     frameRequest = null;
-    if (state !== 'playing') return;
+    if (state !== 'playing' || film.paused) return;
     const time = metadata?.mediaTime ?? film.currentTime;
 
-    if (time >= gripTime) revealFilm();
-    else watchGrip();
+    if (time >= gripTime) {
+      if (!uncovered) revealFilm();
+      if (time >= fullFrameTime || reducedMotion.matches) {
+        hero.classList.add('is-film-wide');
+        film.style.removeProperty('--opening-progress');
+        return;
+      }
+
+      // Follow the filmed lift so the edges dissolve even if playback stalls or pauses.
+      const progress = (time - gripTime) / (fullFrameTime - gripTime);
+      film.style.setProperty('--opening-progress', progress ** 1.35);
+    }
+    watchOpening();
   };
 
   frameRequest = useVideoFrames
@@ -60,9 +74,10 @@ function restoreCover({ error = false } = {}) {
 
   window.setTimeout(() => {
     film.currentTime = 0;
+    film.style.removeProperty('--opening-progress');
     uncovered = false;
     cover.inert = false;
-    hero.classList.remove('is-returning');
+    hero.classList.remove('is-returning', 'is-film-wide');
     state = 'idle';
     if (returnFocus) playButton.focus({ preventScroll: true });
 
@@ -83,7 +98,7 @@ async function startFilm() {
     state = 'playing';
     hero.classList.add('is-showing-film');
     playButton.removeAttribute('aria-busy');
-    watchGrip();
+    watchOpening();
   } catch {
     if (attempt === playbackAttempt) restoreCover({ error: true });
   }
@@ -108,8 +123,14 @@ pauseButton.addEventListener('click', async () => {
 });
 film.addEventListener('ended', () => restoreCover());
 film.addEventListener('error', () => restoreCover({ error: true }));
-film.addEventListener('play', () => { pauseButton.textContent = 'Пауза'; });
-film.addEventListener('pause', () => { pauseButton.textContent = 'Продолжить'; });
+film.addEventListener('play', () => {
+  pauseButton.textContent = 'Пауза';
+  if (state === 'playing') watchOpening();
+});
+film.addEventListener('pause', () => {
+  pauseButton.textContent = 'Продолжить';
+  cancelFrame();
+});
 
 const availability = document.querySelector('.availability');
 if (typeof availability.showModal === 'function') {
