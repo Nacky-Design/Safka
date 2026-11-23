@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4eadb">
+  <title>Сафка — натуральный костный бульон</title>
+  <link rel="icon" href="assets/hero/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/hero/fonts.css">
+  <link rel="stylesheet" href="assets/hero/hero.css">
+  <script src="assets/hero/hero.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Сафка — главная"></a>
+
+    <nav class="desktop-nav" aria-label="Главное меню">
+      <a class="text-link" href="https://safka.ru/nashi-produkty/">Продукция</a>
+      <a class="text-link" href="https://safka.ru/our_mission/">О нас</a>
+      <a class="text-link" href="https://safka.ru/blog/">Блог</a>
+      <a class="text-link" href="https://safka.ru/contact/">Сотрудничество</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-buy" href="https://safka.ru/contact/" data-availability>Где купить</a>
+      <details class="mobile-menu">
+        <summary>Меню</summary>
+        <nav aria-label="Главное меню на телефоне">
+          <a href="https://safka.ru/nashi-produkty/">Продукция</a>
+          <a href="https://safka.ru/our_mission/">О нас</a>
+          <a href="https://safka.ru/blog/">Блог</a>
+          <a href="https://safka.ru/contact/">Сотрудничество</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="hero-stage">
+      <div class="media" aria-hidden="true">
+        <img src="assets/hero/first-frame.webp" alt="" width="1280" height="720" fetchpriority="high" class="poster">
+        <video class="film" id="hero-film" width="1280" height="720" playsinline muted preload="metadata"
+          src="assets/hero/food-film.mp4"></video>
+      </div>
+
+      <div class="cover">
+        <div class="cup" aria-hidden="true"></div>
+        <div class="cover-content">
+          <h1 id="hero-title">
+            <span>Натуральный<br>костный бульон,</span>
+            <em>который вкусно пить просто так</em>
+          </h1>
+          <p class="hero-lead">Пейте горячим или добавляйте в блюда.</p>
+          <img class="laurel" src="assets/hero/laurel.webp" alt="" width="648" height="216">
+
+          <button class="play-button" type="button" aria-controls="hero-film" hidden>
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Смотреть видео</span>
+          </button>
+          <noscript>
+            <a class="play-button" href="assets/hero/food-film.mp4">
+              <span class="play-icon" aria-hidden="true"></span>
+              <span>Смотреть видео</span>
+            </a>
+          </noscript>
+
+          <div class="cover-links">
+            <a class="text-link" href="https://safka.ru/nashi-produkty/">Наши бульоны</a>
+            <a class="text-link" href="https://safka.ru/contact/" data-availability>Где купить</a>
+            <a class="text-link" href="https://safka.ru/contact/">Сотрудничество</a>
+          </div>
+        </div>
+      </div>
+
+      <canvas class="hands" width="1280" height="720" aria-hidden="true"></canvas>
+      <div class="film-controls" hidden>
+        <button class="film-pause" type="button">Пауза</button>
+        <button class="film-return" type="button">Вернуть обложку</button>
+      </div>
+    </div>
+    <p class="film-notice" role="status" hidden></p>
+  </main>
+
+  <dialog class="availability" aria-labelledby="availability-title">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Закрыть" value="close">×</button>
+    </form>
+    <h2 id="availability-title">Где купить</h2>
+    <p>Уточните, где есть бульон «Сафка» в вашем городе.</p>
+    <a class="text-link" href="https://safka.ru/contact/">Контакты «Сафки»</a>
+  </dialog>
+</body>
+</html>
