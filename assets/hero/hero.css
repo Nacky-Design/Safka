@@ -5,7 +5,7 @@
   --cream: #fbf2e2;
   --edge: clamp(19px, 5vw, 96px);
   --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: Manrope, "Noto Sans", sans-serif;
+  --sans: "Alegreya Sans", "Noto Sans", sans-serif;
   --ease: cubic-bezier(.22, .7, .24, 1);
 }
 * { box-sizing: border-box; }
@@ -15,7 +15,7 @@ body {
   min-width: 280px;
   background: #efe3d1;
   color: var(--ink);
-  font: 600 15px/1.5 var(--sans);
+  font: 500 16px/1.5 var(--sans);
 }
 h1, h2, p { margin: 0; }
 a { color: inherit; text-decoration: none; }
@@ -53,18 +53,34 @@ button:disabled { cursor: wait; }
 .desktop-nav, .header-actions { display: flex; align-items: center; }
 .desktop-nav { gap: clamp(22px, 3.35vw, 55px); }
 .header-actions { gap: 10px; justify-self: end; }
-.desktop-nav a { font-size: 14px; }
+.desktop-nav a { font-size: 18px; }
 .header-buy, .mobile-menu summary {
   color: var(--ink);
   border: 1px solid #28211852;
   background: #fbf2e245;
   border-radius: 99px;
   padding: 10px 17px;
-  font-size: 13px;
+  font-size: 15px;
   white-space: nowrap;
   transition: background .4s var(--ease), border-color .4s var(--ease), color .4s var(--ease);
 }
-.header-buy { font-weight: 700; }
+.header-buy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  font-weight: 700;
+}
+.header-buy::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, #f2c770, #f9e5bc 75%);
+  opacity: .85;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .52s var(--ease);
+}
 .text-link {
   position: relative;
   display: inline-flex;
@@ -99,7 +115,7 @@ button:disabled { cursor: wait; }
   min-width: min(100%, 1040px);
   aspect-ratio: 16 / 9;
 }
-.media, .poster, .film, .hands {
+.media, .poster, .film {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -124,10 +140,10 @@ button:disabled { cursor: wait; }
 .cover {
   position: absolute;
   z-index: 1;
-  top: 25.18%;
+  top: 23.8%;
   left: 50%;
-  width: 59.925%;
-  height: 59.925%;
+  width: 62.1%;
+  height: 63.2%;
   transform: translateX(-50%);
   text-align: center;
   transition: opacity .36s var(--ease);
@@ -148,19 +164,20 @@ button:disabled { cursor: wait; }
 @supports (clip-path: shape(from 0% 0%, line to 100% 100%, close)) {
   .cup {
     border-radius: 0;
-    clip-path: shape(from 0% 19%,
-      curve to 100% 19% with 0% -7% / 100% -7%,
-      curve to 82% 83% with 100% 38% / 99.5% 68%,
-      curve to 50% 100% with 73% 97% / 61% 100%,
-      curve to 18% 83% with 39% 100% / 27% 97%,
-      curve to 0% 19% with .5% 68% / 0% 38%, close);
+    clip-path: shape(from 50% 0%,
+      curve to 100% 17.5% with 77.6% 0% / 100% 7.8%,
+      curve to 88.5% 72% with 100% 36% / 96.8% 57%,
+      curve to 50% 100% with 80.2% 87% / 68% 100%,
+      curve to 11.5% 72% with 32% 100% / 19.8% 87%,
+      curve to 0% 17.5% with 3.2% 57% / 0% 36%,
+      curve to 50% 0% with 0% 7.8% / 22.4% 0%, close);
   }
 }
 .cover-content {
   width: 87%;
   height: 100%;
   margin-inline: auto;
-  padding-top: 7.4%;
+  padding-top: 8.55%;
 }
 h1 {
   font: 600 clamp(54px, 5.05vw, 83px)/.79 var(--serif);
@@ -175,15 +192,16 @@ h1 em {
   line-height: 1;
 }
 .hero-lead {
-  max-width: 31ch;
+  max-width: 38ch;
   margin: 15px auto 0;
-  font-size: clamp(13px, 1.07vw, 17px);
+  font-size: clamp(15px, 1.25vw, 19px);
 }
 .laurel {
   display: block;
-  width: clamp(90px, 9.2vw, 140px);
-  height: auto;
-  margin: 11px auto 4px;
+  width: clamp(132px, 12.1vw, 184px);
+  height: clamp(39px, 3.35vw, 51px);
+  object-fit: contain;
+  margin: 12px auto 13px;
 }
 .play-button {
   position: relative;
@@ -198,7 +216,7 @@ h1 em {
   border-radius: 99px;
   color: var(--cream);
   background: #2a2118;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   transition: background .45s var(--ease), transform .45s var(--ease), box-shadow .45s var(--ease);
 }
@@ -232,12 +250,11 @@ h1 em {
   align-items: center;
   flex-wrap: wrap;
   gap: 4px clamp(13px, 1.65vw, 26px);
-  margin-top: 16px;
-  font-size: clamp(11px, .92vw, 14px);
+  margin-top: 23px;
+  font-size: clamp(14px, 1.16vw, 17px);
   font-weight: 700;
 }
 .cover-links .text-link { color: #4c341b; }
-.hands { z-index: 2; pointer-events: none; clip-path: inset(18% 17% 12%); }
 .film-controls {
   position: absolute;
   z-index: 3;
@@ -300,6 +317,7 @@ h1 em {
 .availability a { font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 :is(.header-buy, .mobile-menu summary, .film-controls button, .dialog-close):focus-visible { background: #fff5e4; }
 .brand:focus-visible { color: var(--ochre); }
+.header-buy:focus-visible::before { transform: scaleX(1); }
 .text-link:focus-visible::after { transform: scaleX(1); }
 .play-button:focus-visible::before { opacity: .82; }
 @media (hover: hover) {
@@ -311,6 +329,7 @@ h1 em {
     border-color: #9b6d37a6;
     background: #fff4dfbf;
   }
+  .header-buy:hover::before { transform: scaleX(1); }
   .play-button:hover { transform: translateY(-1px); box-shadow: 0 5px 16px #62401c29; }
   .play-button:hover::before { opacity: .8; }
   .play-button:hover .play-icon { background: #ffcf7840; border-color: #fce1b8c4; }
@@ -319,8 +338,9 @@ h1 em {
 @media (max-width: 1140px) {
   h1 { font-size: clamp(48px, 5.5vw, 63px); }
   .hero-lead { margin-top: 12px; }
-  .laurel { width: 94px; margin-top: 8px; }
-  .cover-links { margin-top: 12px; }
+  .cover-content { padding-top: 7%; }
+  .laurel { width: 135px; height: 41px; margin: 8px auto 8px; }
+  .cover-links { margin-top: 16px; }
   .play-button { min-height: 41px; padding-block: 8px; }
 }
 @media (max-width: 1040px) {
@@ -329,32 +349,40 @@ h1 em {
   .mobile-menu { display: block; }
   .brand { transform: scale(.87); transform-origin: left center; }
   .hero { min-height: max(100svh, 655px); }
-  .hero-stage { width: 100%; min-width: 0; height: max(655px, 100svh); aspect-ratio: auto; }
-  .media, .hands {
-    inset: 51% auto auto 50%;
-    width: clamp(510px, 158vw, 1100px);
+  .hero-stage {
+    --cover-width: min(92vw, 610px);
+    --resting-media-width: calc(var(--cover-width) * 1.58);
+    --media-center: calc(50% - var(--resting-media-width) * .026);
+    width: 100%;
+    min-width: 0;
+    height: max(655px, 100svh);
+    aspect-ratio: auto;
+  }
+  .media {
+    inset: var(--media-center) auto auto 50%;
+    width: var(--resting-media-width);
     height: auto;
     aspect-ratio: 16 / 9;
     transform: translate(-50%, -50%);
     transition: width .5s var(--ease);
   }
-  .is-uncovered :is(.media, .hands) { width: min(100%, 910px); }
-  .cover { top: 50%; width: min(92%, 610px); height: clamp(336px, 57vw, 427px); transform: translate(-50%, -48%); }
+  .is-uncovered .media { width: min(100%, 910px); }
+  .cover { top: 50%; width: var(--cover-width); height: clamp(362px, 57vw, 455px); transform: translate(-50%, -48%); }
   .cover-content { width: 84%; padding-top: clamp(38px, 7vw, 48px); }
   h1 { font-size: clamp(39px, 9.9vw, 64px); }
-  h1 em { font-size: .58em; max-width: min(96%, 380px); line-height: 1.04; margin-top: 8px; }
+  h1 em { font-size: .58em; max-width: min(96%, 500px); line-height: 1.04; margin-top: 8px; }
   .hero-lead { margin-top: 11px; }
-  .laurel { width: 92px; margin: 7px auto 2px; }
-  .play-button { min-height: 44px; font-size: 13px; }
-  .cover-links { font-size: 11px; gap: 2px 10px; margin-top: 10px; }
+  .laurel { width: 140px; height: 43px; margin: 9px auto 11px; }
+  .play-button { min-height: 44px; font-size: 15px; }
+  .cover-links { font-size: 14px; gap: 2px 17px; margin-top: 16px; }
   .cover-links .text-link { padding-block: 6px; }
-  .film-controls { top: calc(51% + min(28.125vw, 256px) + 14px); bottom: auto; }
+  .film-controls { top: calc(var(--media-center) + min(28.125vw, 256px) + 14px); bottom: auto; }
 }
 @media (max-width: 400px) {
-  .cover { height: 349px; }
+  .cover { height: 371px; }
   .cover-content { width: 88%; }
   h1 { font-size: clamp(34px, 10.4vw, 42px); }
-  .cover-links { gap: 2px 9px; }
+  .cover-links { gap: 2px 13px; }
   .header-buy, .mobile-menu summary { padding-inline: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
