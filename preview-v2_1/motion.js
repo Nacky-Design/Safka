@@ -47,6 +47,8 @@
     });
   }
 
+  register('#flavors .flavor-card', 520, 14, 0, 75);
+
   register('#company h2', 560, 16);
   register('#company .batch-lead', 560, 16, 80);
   register('#company .batch-cta', 560, 16, 160);
@@ -55,6 +57,8 @@
   register('#production h2', 540, 16);
   register('#production .batch-lead', 540, 16, 80);
   register('#production .production-steps li', 500, 14, 160, 70);
+
+  register('#production .production-action', 540, 16, 110);
 
   register('#uses .use-card', 580, 18, 0, 85);
   register('#buy h2', 540, 16);

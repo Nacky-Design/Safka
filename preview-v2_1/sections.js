@@ -74,39 +74,49 @@
 
   const film = document.querySelector('#story-film');
   const filmControl = document.querySelector('.production-action');
+  let filmVisible = false;
+  let filmPausedByUser = false;
 
   function updateFilm() {
     filmControl.textContent = film.paused || film.ended
       ? 'Смотреть ролик Safka' : 'Приостановить ролик Safka';
   }
 
-  filmControl.addEventListener('click', () => {
-    if (film.paused) {
-      const rect = film.getBoundingClientRect();
-      if (rect.top < 0 || rect.bottom > innerHeight) film.scrollIntoView({ block: 'nearest' });
-      film.play().catch(updateFilm);
-    } else {
+  function syncFilm() {
+    if (!filmVisible || document.hidden || filmPausedByUser) {
       film.pause();
+    } else if (!reduced.matches && film.paused && !film.error) {
+      film.play().catch(updateFilm);
     }
+  }
+
+  filmControl.addEventListener('click', () => {
+    filmPausedByUser = !film.paused;
+    if (filmPausedByUser) {
+      film.pause();
+      return;
+    }
+    const rect = film.getBoundingClientRect();
+    if (rect.top < 0 || rect.bottom > innerHeight) film.scrollIntoView({ block: 'nearest' });
+    film.play().catch(updateFilm);
   });
   film.addEventListener('playing', updateFilm);
   film.addEventListener('pause', updateFilm);
-  film.addEventListener('ended', () => {
-    film.load();
-    updateFilm();
-  });
   film.addEventListener('error', () => {
     film.dataset.unavailable = '';
     updateFilm();
   });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) film.pause();
-    }).observe(film);
+      filmVisible = entry.intersectionRatio >= .5;
+      syncFilm();
+    }, { threshold: .5 }).observe(film);
   }
-  reduced.addEventListener('change', (event) => {
-    if (event.matches) film.pause();
+  reduced.addEventListener('change', ({ matches }) => {
+    if (matches) film.pause();
+    else syncFilm();
   });
+  document.addEventListener('visibilitychange', syncFilm);
 
   const windowElement = document.querySelector('.retail-window');
   const track = windowElement.querySelector('.retail-track');

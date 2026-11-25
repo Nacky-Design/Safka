@@ -20,6 +20,36 @@
   <script src="motion.js" defer blocking="render"></script>
 </head>
 <body>
+  <header class="hero-header">
+    <a class="brand" href="#top" aria-label="Сафка — главная">
+      <img src="assets/hero/logo.svg" alt="" width="297" height="210">
+    </a>
+    <button class="button button-light menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primary-nav" hidden>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav id="primary-nav" class="navigation" aria-label="Основная навигация">
+      <div class="catalog" id="catalog">
+        <button class="catalog-toggle" type="button" aria-expanded="false" aria-controls="catalog-items" hidden>
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor"><path d="M0 0h8v8H0zm12 0h8v8h-8zM0 12h8v8H0zm12 0h8v8h-8z"/></svg>
+          <span>Продукция</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m2 4 4 4 4-4"/></svg>
+        </button>
+        <noscript><a href="#flavors">Продукция</a></noscript>
+        <ul id="catalog-items" class="catalog-items" hidden>
+          <li><a href="#chicken"><img src="assets/flavors/chicken_hover_poster.png" width="1176" height="784" alt=""><span>Куриный бульон</span></a></li>
+          <li><a href="#beef"><img src="assets/flavors/beef_hover_poster.png" width="1176" height="784" alt=""><span>Говяжий бульон</span></a></li>
+          <li><a href="#turkey"><img src="assets/flavors/turkey_hover_poster.png" width="1176" height="784" alt=""><span>Бульон из индейки</span></a></li>
+        </ul>
+      </div>
+      <a class="nav-link" href="https://safka.ru/our_mission/">О компании</a>
+      <a class="nav-link" href="https://safka.ru/blog/">Блог</a>
+      <a class="nav-link" href="https://safka.ru/contact/">Сотрудничество</a>
+    </nav>
+    <a class="button button-light buy-link" href="#buy">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+      Где купить
+    </a>
+  </header>
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media">
@@ -27,36 +57,6 @@
           poster="assets/hero/hero_background_poster.png"
           src="assets/hero/hero_background_video.mp4"></video>
       </div>
-      <header class="hero-header">
-        <a class="brand" href="#top" aria-label="Сафка — главная">
-          <img src="assets/hero/logo.svg" alt="" width="297" height="210">
-        </a>
-        <button class="button button-light menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primary-nav" hidden>
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-        <nav id="primary-nav" class="navigation" aria-label="Основная навигация">
-          <div class="catalog" id="catalog">
-            <button class="catalog-toggle" type="button" aria-expanded="false" aria-controls="catalog-items" hidden>
-              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor"><path d="M0 0h8v8H0zm12 0h8v8h-8zM0 12h8v8H0zm12 0h8v8h-8z"/></svg>
-              <span>Продукция</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m2 4 4 4 4-4"/></svg>
-            </button>
-            <noscript><a href="#flavors">Продукция</a></noscript>
-            <ul id="catalog-items" class="catalog-items" hidden>
-              <li><a href="#chicken"><img src="assets/flavors/chicken_hover_poster.png" width="1176" height="784" alt=""><span>Куриный бульон</span></a></li>
-              <li><a href="#beef"><img src="assets/flavors/beef_hover_poster.png" width="1176" height="784" alt=""><span>Говяжий бульон</span></a></li>
-              <li><a href="#turkey"><img src="assets/flavors/turkey_hover_poster.png" width="1176" height="784" alt=""><span>Бульон из индейки</span></a></li>
-            </ul>
-          </div>
-          <a class="nav-link" href="https://safka.ru/our_mission/">О компании</a>
-          <a class="nav-link" href="https://safka.ru/blog/">Блог</a>
-          <a class="nav-link" href="https://safka.ru/contact/">Сотрудничество</a>
-        </nav>
-        <a class="button button-light buy-link" href="#buy">
-          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
-          Где купить
-        </a>
-      </header>
       <div class="hero-copy">
         <h1 id="hero-title" class="heading-hero">
           <span>Натуральный</span>
@@ -139,8 +139,15 @@
     <section id="production" class="batch-section production" aria-labelledby="production-title">
       <div class="production-visual">
         <img class="production-shell" src="assets/approved-details/production-shell.png" width="900" height="942" alt="Медная кастрюля">
+        <svg class="production-mask" width="0" height="0" aria-hidden="true">
+          <defs>
+            <clipPath id="production-window" clipPathUnits="objectBoundingBox">
+              <path d="M.009 .32 Q.007 .088 .13 .052 C.26 -.003 .69 -.008 .864 .025 Q.992 .043 .996 .302 L.996 .749 Q.994 .902 .932 .936 C.832 .991 .307 1.005 .105 .981 Q.003 .957 .006 .815 Z"/>
+            </clipPath>
+          </defs>
+        </svg>
         <video class="story-film" id="story-film" src="assets/production/food-film.mp4"
-          poster="assets/production/first-frame.webp" preload="none" muted playsinline aria-hidden="true"></video>
+          poster="assets/production/first-frame.webp" preload="none" muted loop playsinline aria-hidden="true"></video>
       </div>
       <div class="production-copy">
         <h2 id="production-title" class="heading-media-side">Как мы это делаем</h2>
@@ -204,7 +211,7 @@
 
     <section id="partnership" class="batch-section partnership" aria-labelledby="partner-title">
       <div class="partner-copy">
-        <h2 id="partner-title" class="heading-feature">Заявка<br>на сотрудничество</h2>
+        <h2 id="partner-title" class="heading-feature">Давайте<br>сотрудничать</h2>
         <p class="batch-lead">Станьте партнёром Safka — добавьте в ассортимент натуральный костный бульон.</p>
       </div>
       <form class="partner-fields" aria-labelledby="partner-title">

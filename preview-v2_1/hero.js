@@ -1,3 +1,11 @@
+const header = document.querySelector('.hero-header');
+function updateHeader() {
+  header.toggleAttribute('data-scrolled', scrollY > 24);
+}
+
+addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#primary-nav');
 const catalog = document.querySelector('.catalog');
@@ -7,8 +15,10 @@ const desktop = matchMedia('(min-width: 1024px)');
 const hover = matchMedia('(hover: hover) and (pointer: fine)');
 let dismissedCatalog = false;
 let pinnedCatalog = false;
+let catalogCloseTimer;
 
 function showCatalog(open) {
+  clearTimeout(catalogCloseTimer);
   catalogToggle.setAttribute('aria-expanded', String(open));
   catalogItems.hidden = !open;
   if (!open) pinnedCatalog = false;
@@ -45,12 +55,16 @@ catalogToggle.addEventListener('keydown', (event) => {
   }
 });
 
-catalog.addEventListener('pointerenter', () => {
-  if (desktop.matches && hover.matches) showCatalog(true);
+catalog.addEventListener('pointerenter', (event) => {
+  clearTimeout(catalogCloseTimer);
+  if (event.pointerType === 'mouse' && desktop.matches && hover.matches && !dismissedCatalog) showCatalog(true);
 });
-catalog.addEventListener('pointerleave', () => {
+catalog.addEventListener('pointerleave', (event) => {
+  if (event.pointerType !== 'mouse' || !desktop.matches) return;
   dismissedCatalog = false;
-  if (!pinnedCatalog && !catalogItems.contains(document.activeElement)) showCatalog(false);
+  catalogCloseTimer = setTimeout(() => {
+    if (!pinnedCatalog && !catalogItems.contains(document.activeElement)) showCatalog(false);
+  }, 160);
 });
 catalogToggle.addEventListener('focus', () => {
   if (desktop.matches && !dismissedCatalog && catalogToggle.matches(':focus-visible')) showCatalog(true);

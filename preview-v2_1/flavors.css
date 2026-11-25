@@ -89,3 +89,14 @@
   color: var(--ink-muted);
   cursor: not-allowed;
 }
+
+
+@media (hover: hover) {
+  .flavor-card:hover { box-shadow: 0 7px 22px #382b1a17; }
+  .flavor-card:hover .flavor-caption { background-color: var(--surface-selected); }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .flavor-card { transition: box-shadow 200ms ease; }
+  .flavor-caption { transition: background-color 200ms ease; }
+}
