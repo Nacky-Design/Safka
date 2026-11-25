@@ -116,7 +116,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
 @media (prefers-reduced-motion: no-preference) {
   .hero-header::before { transition: opacity 240ms ease; }
   .hero-header :is(.brand, .buy-link, .nav-link, .catalog-toggle) {
-    transition: transform 240ms ease, background-color 180ms ease, box-shadow 180ms ease;
+    transition: transform 240ms ease, translate 240ms ease, background-color 180ms ease, box-shadow 180ms ease;
   }
 }
 
@@ -150,6 +150,8 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
 
 @media (min-width: 1024px) {
   :root {
+    --hero-right-axis: 3.3854vw;
+    --header-right-inset: 5.2vw;
     --sticky-top: 10px;
     --sticky-height: 68px;
     --header-logo-width: clamp(79px, 8.4vw, 164px);
@@ -178,7 +180,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   .hero-media::after { content: none; }
   .video-toggle svg { width: 27px; height: 27px; }
   .video-toggle {
-    inset-inline-end: 4.2%;
+    inset-inline-end: var(--hero-right-axis);
     inset-block-end: 6.7%;
   }
   .brand { inset-block-start: -1px; transform-origin: left top; }
@@ -191,7 +193,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
     justify-items: start;
     align-items: start;
     min-block-size: 0;
-    padding-inline: 6.6% 5.2%;
+    padding-inline: 6.6% var(--header-right-inset);
     padding-block-start: var(--header-top-inset);
   }
   .hero-header .navigation {
@@ -216,10 +218,16 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
     transform: translateY(calc(19px - var(--header-top-inset)));
   }
   .hero-header[data-scrolled] .buy-link {
+    translate: none;
     transform: translateY(calc(20px - var(--header-top-inset))) scale(.84);
     transform-origin: right top;
   }
-  .buy-link { justify-self: end; min-block-size: clamp(44px, 3.4vw, 62px); min-inline-size: clamp(124px, 10.2vw, 184px); }
+  .buy-link {
+    justify-self: end;
+    min-block-size: clamp(44px, 3.4vw, 62px);
+    min-inline-size: clamp(124px, 10.2vw, 184px);
+    translate: calc(var(--header-right-inset) - var(--hero-right-axis)) 0;
+  }
   .hero-copy {
     position: absolute;
     inset-block-start: 27.43%;
@@ -235,7 +243,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   }
   .flavor-peek {
     column-gap: .65vw;
-    padding-inline: 3.3854vw;
+    padding-inline: var(--hero-right-axis);
   }
 }
 
@@ -297,7 +305,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   .catalog-panel {
     position: absolute;
     inset-block-start: calc(var(--header-top-inset) + clamp(48px, 3.4vw, 62px) + 5px);
-    inset-inline-end: max(16px, 3vw);
+    inset-inline-end: var(--hero-right-axis);
     inline-size: clamp(590px, 48vw, 860px);
     max-block-size: calc(100svh - 112px);
     overflow: auto;
