@@ -61,12 +61,11 @@
   --ink: #272616;
   --ink-light: #fff6e6;
   --ink-muted: #5f5744;
-  --action: #555525;
-  --action-hover: #46461d;
-  --action-active: #383816;
+  --ink-olive: #343519;
   --accent-action: #ffce36;
   --accent-hover: #ffd950;
   --accent-active: #edb829;
+  --accent-soft: #fae6a6;
   --cta-size: clamp(17px, 1.2vw, 22px);
   --heading-h2-leading: 1.04;
   --heading-h2-tracking: -.022em;
@@ -76,10 +75,9 @@
   --field-disabled: #ede4d5;
   --error: #873b2f;
   --radius-pill: 999px;
-  --radius-usage: 10px;
-  --radius-product-media: clamp(16px, 1.82vw, 32px);
-  --radius-product-shell: clamp(20px, 2.4vw, 40px);
-  --radius-textarea: clamp(24px, 1.8vw, 30px);
+  --radius-small: clamp(8px, .65vw, 12px);
+  --radius-medium: clamp(14px, 1.3vw, 24px);
+  --radius-large: clamp(20px, 1.65vw, 32px);
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
@@ -124,16 +122,20 @@ a { color: inherit; }
 }
 
 button:not(:disabled), a[href] { cursor: pointer; }
-.button-primary { color: var(--ink-light); background: var(--button-fill, var(--action)); }
-.button-primary:hover { background: var(--action-hover); }
-.button-primary:active { background: var(--action-active); }
+.button-primary { color: var(--ink); background: var(--accent-action); }
+.button-primary:hover { background-color: var(--accent-hover); }
+.button-primary:active { background-color: var(--accent-active); }
 .button-light { color: var(--ink); background: var(--ink-light); }
-button.button-light:hover, a.button-light:hover { background: var(--surface); }
-a.button-light:active { background: var(--field-disabled); }
-.button-accent { background: var(--accent-action); color: var(--ink); }
-.button-accent:hover { background: var(--accent-hover); }
-.button-accent:active { background: var(--accent-active); }
+button.button-light:hover, a.button-light:hover { background-color: var(--accent-soft); }
+button.button-light:active, a.button-light:active { background-color: var(--field-disabled); }
 .button:disabled { color: var(--ink-muted); background: var(--field-disabled); }
+.button svg { flex-shrink: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .button { transition: background-color 180ms ease, box-shadow 180ms ease; }
+  .button-primary svg { transition: transform 180ms ease; }
+  .button-primary:hover svg { transform: translateX(2px); }
+}
 
 /* Interpolation between the approved UI Kit control widths. */
 :root {

@@ -1,6 +1,7 @@
 const header = document.querySelector('.hero-header');
 function updateHeader() {
-  header.toggleAttribute('data-scrolled', scrollY > 24);
+  const compact = header.hasAttribute('data-scrolled');
+  header.toggleAttribute('data-scrolled', scrollY > (compact ? 28 : 64));
 }
 
 addEventListener('scroll', updateHeader, { passive: true });
@@ -64,7 +65,7 @@ catalog.addEventListener('pointerleave', (event) => {
   dismissedCatalog = false;
   catalogCloseTimer = setTimeout(() => {
     if (!pinnedCatalog && !catalogItems.contains(document.activeElement)) showCatalog(false);
-  }, 160);
+  }, 350);
 });
 catalogToggle.addEventListener('focus', () => {
   if (desktop.matches && !dismissedCatalog && catalogToggle.matches(':focus-visible')) showCatalog(true);

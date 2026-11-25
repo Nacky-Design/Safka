@@ -35,11 +35,38 @@
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m2 4 4 4 4-4"/></svg>
         </button>
         <noscript><a href="#flavors">Продукция</a></noscript>
-        <ul id="catalog-items" class="catalog-items" hidden>
-          <li><a href="#chicken"><img src="assets/flavors/chicken_hover_poster.png" width="1176" height="784" alt=""><span>Куриный бульон</span></a></li>
-          <li><a href="#beef"><img src="assets/flavors/beef_hover_poster.png" width="1536" height="1024" alt=""><span>Говяжий бульон</span></a></li>
-          <li><a href="#turkey"><img src="assets/flavors/turkey_hover_poster.png" width="1176" height="784" alt=""><span>Бульон из индейки</span></a></li>
-        </ul>
+        <div id="catalog-items" class="catalog-panel" hidden>
+          <p class="catalog-heading">Каталог</p>
+          <ul class="catalog-items">
+            <li>
+              <a class="catalog-card catalog-chicken" href="#chicken">
+                <span>Куриный бульон</span>
+                <svg class="catalog-pack" viewBox="224 47 322 633" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-chicken"><path d="M228 64 Q260 52 463 50 L540 59 541 641 325 675 229 641Z"/></clipPath></defs>
+                  <image href="assets/flavors/chicken_hover_poster.png" width="1176" height="784" clip-path="url(#catalog-pack-chicken)"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="catalog-card catalog-beef" href="#beef">
+                <span>Говяжий бульон</span>
+                <svg class="catalog-pack" viewBox="246 64 503 822" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-beef"><path d="M249 82 Q298 74 584 67 Q651 66 729 88 Q751 94 745 106 L714 165 715 840 380 883 250 846Z"/></clipPath></defs>
+                  <image href="assets/flavors/beef_hover_poster.png" width="1536" height="1024" clip-path="url(#catalog-pack-beef)"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="catalog-card catalog-turkey" href="#turkey">
+                <span>Бульон из индейки</span>
+                <svg class="catalog-pack" viewBox="188 49 389 630" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-turkey"><path d="M192 65 Q280 52 479 52 Q543 55 572 69 Q575 73 571 83 L545 131 542 643 270 675 193 649Z"/></clipPath></defs>
+                  <image href="assets/flavors/turkey_hover_poster.png" width="1176" height="784" clip-path="url(#catalog-pack-turkey)"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <a class="nav-link" href="https://safka.ru/our_mission/">О компании</a>
       <a class="nav-link" href="https://safka.ru/blog/">Блог</a>
@@ -59,11 +86,11 @@
       </div>
       <div class="hero-copy">
         <h1 id="hero-title" class="heading-hero">
-          <span>Натуральный</span>
+          <span class="hero-heading-accent">Натуральный</span>
           <span>костный бульон,</span>
           <em class="heading-hero-italic"><span>который вкусно пить</span> <span>просто так</span></em>
         </h1>
-        <a class="button button-primary button-accent hero-cta" href="#flavors">
+        <a class="button button-primary hero-cta" href="#flavors">
           Наши бульоны
           <svg width="25" height="20" viewBox="0 0 25 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10h19m-6-5 6 5-6 5"/></svg>
         </a>
