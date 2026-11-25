@@ -1,0 +1,284 @@
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/alegreya-sans-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/alegreya-sans-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/alegreya-sans-700-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/alegreya-sans-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Safka Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/safka-serif-bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Safka Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/safka-serif-italic.woff2) format('woff2');
+}
+
+:root {
+  color-scheme: light;
+  --font-serif: "Safka Serif", Georgia, serif;
+  --font-sans: "Alegreya Sans", Arial, sans-serif;
+  --surface: #faf1e2;
+  --surface-soft: #fef6ed;
+  --surface-selected: #f9f0e7;
+  --surface-dark: #38301e;
+  --ink: #272616;
+  --ink-light: #fff6e6;
+  --ink-muted: #5f5744;
+  --action: #555525;
+  --action-hover: #46461d;
+  --action-active: #383816;
+  --field-border: #81735a;
+  --divider: #d8cab6;
+  --field-disabled: #ede4d5;
+  --error: #873b2f;
+  --radius-pill: 999px;
+  --radius-usage: 10px;
+  --radius-product-media: clamp(16px, 1.82vw, 32px);
+  --radius-product-shell: clamp(20px, 2.4vw, 40px);
+  --radius-textarea: clamp(24px, 1.8vw, 30px);
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --control-min: 44px;
+  --hero-leading: 1.02;
+  --heading-leading: 1.06;
+  --display-leading: 1.04;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 1rem/1.45 var(--font-sans);
+}
+
+h1, h2, h3, p, ul { margin: 0; }
+img, video { display: block; max-inline-size: 100%; }
+button, input, textarea, select { font: inherit; }
+button { color: inherit; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-5);
+  min-block-size: var(--control-min);
+  border: 0;
+  border-radius: var(--radius-pill);
+  font: 700 var(--navigation-size)/1.25 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+button:not(:disabled), a[href] { cursor: pointer; }
+.button-primary { color: var(--ink-light); background: var(--button-fill, var(--action)); }
+.button-primary:hover { background: var(--action-hover); }
+.button-primary:active { background: var(--action-active); }
+.button-light { color: var(--ink); background: var(--ink-light); }
+button.button-light:hover, a.button-light:hover { background: var(--surface); }
+.button:disabled { color: var(--ink-muted); background: var(--field-disabled); }
+
+/* Interpolation between the approved UI Kit control widths. */
+:root {
+  --page-gutter: clamp(20px, calc(20px + (100vw - 320px) * 4 / 110), 24px);
+  --navigation-size: 16px;
+  --hero-size: clamp(36px, calc(36px + (100vw - 320px) * 6 / 110), 42px);
+  --hero-italic-size: clamp(22px, calc(22px + (100vw - 320px) * 2 / 110), 24px);
+  --section-size: clamp(32px, calc(32px + (100vw - 320px) * 3 / 110), 35px);
+  --feature-size: clamp(32px, calc(32px + (100vw - 320px) * 6 / 110), 38px);
+  --feature-leading: clamp(34px, calc(34px + (100vw - 320px) * 6 / 110), 40px);
+  --media-side-size: clamp(32px, calc(32px + (100vw - 320px) * 3 / 110), 35px);
+  --display-center-size: clamp(38px, calc(38px + (100vw - 320px) * 4 / 110), 42px);
+  --card-caption-size: clamp(26px, calc(26px + (100vw - 320px) * 2 / 110), 28px);
+  --card-overlay-size: clamp(26px, calc(26px + (100vw - 320px) * 2 / 110), 28px);
+  --nav-group-size: clamp(18px, calc(18px + (100vw - 320px) * 1 / 110), 19px);
+}
+@media (min-width: 430px) {
+  :root {
+    --page-gutter: clamp(24px, calc(24px + (100vw - 430px) * 8 / 338), 32px);
+    --navigation-size: clamp(16px, calc(16px + (100vw - 430px) * 1 / 338), 17px);
+    --hero-size: clamp(42px, calc(42px + (100vw - 430px) * 10 / 338), 52px);
+    --hero-italic-size: clamp(24px, calc(24px + (100vw - 430px) * 4 / 338), 28px);
+    --section-size: clamp(35px, calc(35px + (100vw - 430px) * 9 / 338), 44px);
+    --feature-size: clamp(38px, calc(38px + (100vw - 430px) * 12 / 338), 50px);
+    --feature-leading: clamp(40px, calc(40px + (100vw - 430px) * 12 / 338), 52px);
+    --media-side-size: clamp(35px, calc(35px + (100vw - 430px) * 11 / 338), 46px);
+    --display-center-size: clamp(42px, calc(42px + (100vw - 430px) * 12 / 338), 54px);
+    --card-caption-size: clamp(28px, calc(28px + (100vw - 430px) * 2 / 338), 30px);
+    --card-overlay-size: clamp(28px, calc(28px + (100vw - 430px) * 2 / 338), 30px);
+    --nav-group-size: clamp(19px, calc(19px + (100vw - 430px) * 1 / 338), 20px);
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: clamp(32px, calc(32px + (100vw - 768px) * 24 / 672), 56px);
+    --navigation-size: clamp(17px, calc(17px + (100vw - 768px) * 1 / 672), 18px);
+    --hero-size: clamp(52px, calc(52px + (100vw - 768px) * 20 / 672), 72px);
+    --hero-italic-size: clamp(28px, calc(28px + (100vw - 768px) * 8 / 672), 36px);
+    --section-size: clamp(44px, calc(44px + (100vw - 768px) * 16 / 672), 60px);
+    --feature-size: clamp(50px, calc(50px + (100vw - 768px) * 24 / 672), 74px);
+    --feature-leading: clamp(52px, calc(52px + (100vw - 768px) * 20 / 672), 72px);
+    --media-side-size: clamp(46px, calc(46px + (100vw - 768px) * 22 / 672), 68px);
+    --display-center-size: clamp(54px, calc(54px + (100vw - 768px) * 32 / 672), 86px);
+    --card-caption-size: clamp(30px, calc(30px + (100vw - 768px) * 4 / 672), 34px);
+    --card-overlay-size: clamp(30px, calc(30px + (100vw - 768px) * 8 / 672), 38px);
+    --nav-group-size: clamp(20px, calc(20px + (100vw - 768px) * 3 / 672), 23px);
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --page-gutter: clamp(56px, calc(56px + (100vw - 1440px) * 4 / 96), 60px);
+    --navigation-size: 18px;
+    --hero-size: clamp(72px, calc(72px + (100vw - 1440px) * 5 / 96), 77px);
+    --hero-italic-size: clamp(36px, calc(36px + (100vw - 1440px) * 2 / 96), 38px);
+    --section-size: clamp(60px, calc(60px + (100vw - 1440px) * 4 / 96), 64px);
+    --feature-size: clamp(74px, calc(74px + (100vw - 1440px) * 4 / 96), 78px);
+    --feature-leading: clamp(72px, calc(72px + (100vw - 1440px) * 4 / 96), 76px);
+    --media-side-size: clamp(68px, calc(68px + (100vw - 1440px) * 4 / 96), 72px);
+    --display-center-size: clamp(86px, calc(86px + (100vw - 1440px) * 6 / 96), 92px);
+    --card-caption-size: clamp(34px, calc(34px + (100vw - 1440px) * 2 / 96), 36px);
+    --card-overlay-size: clamp(38px, calc(38px + (100vw - 1440px) * 2 / 96), 40px);
+    --nav-group-size: clamp(23px, calc(23px + (100vw - 1440px) * 2 / 96), 25px);
+  }
+}
+@media (min-width: 1536px) {
+  :root {
+    --page-gutter: clamp(60px, calc(60px + (100vw - 1536px) * 4 / 136), 64px);
+    --navigation-size: 18px;
+    --hero-size: clamp(77px, calc(77px + (100vw - 1536px) * 3 / 136), 80px);
+    --hero-italic-size: clamp(38px, calc(38px + (100vw - 1536px) * 2 / 136), 40px);
+    --section-size: clamp(64px, calc(64px + (100vw - 1536px) * 4 / 136), 68px);
+    --feature-size: clamp(78px, calc(78px + (100vw - 1536px) * 6 / 136), 84px);
+    --feature-leading: clamp(76px, calc(76px + (100vw - 1536px) * 6 / 136), 82px);
+    --media-side-size: clamp(72px, calc(72px + (100vw - 1536px) * 4 / 136), 76px);
+    --display-center-size: clamp(92px, calc(92px + (100vw - 1536px) * 8 / 136), 100px);
+    --card-caption-size: clamp(36px, calc(36px + (100vw - 1536px) * 3 / 136), 39px);
+    --card-overlay-size: clamp(40px, calc(40px + (100vw - 1536px) * 4 / 136), 44px);
+    --nav-group-size: clamp(25px, calc(25px + (100vw - 1536px) * 1 / 136), 26px);
+  }
+}
+@media (min-width: 1672px) {
+  :root {
+    --page-gutter: clamp(64px, calc(64px + (100vw - 1672px) * 12 / 248), 76px);
+    --navigation-size: 18px;
+    --hero-size: clamp(80px, calc(80px + (100vw - 1672px) * 12 / 248), 92px);
+    --hero-italic-size: clamp(40px, calc(40px + (100vw - 1672px) * 4 / 248), 44px);
+    --section-size: clamp(68px, calc(68px + (100vw - 1672px) * 8 / 248), 76px);
+    --feature-size: clamp(84px, calc(84px + (100vw - 1672px) * 10 / 248), 94px);
+    --feature-leading: clamp(82px, calc(82px + (100vw - 1672px) * 10 / 248), 92px);
+    --media-side-size: clamp(76px, calc(76px + (100vw - 1672px) * 8 / 248), 84px);
+    --display-center-size: clamp(100px, calc(100px + (100vw - 1672px) * 8 / 248), 108px);
+    --card-caption-size: clamp(39px, calc(39px + (100vw - 1672px) * 3 / 248), 42px);
+    --card-overlay-size: clamp(44px, calc(44px + (100vw - 1672px) * 2 / 248), 46px);
+    --nav-group-size: clamp(26px, calc(26px + (100vw - 1672px) * 2 / 248), 28px);
+  }
+}
+@media (min-width: 1920px) {
+  :root {
+    --page-gutter: clamp(76px, calc(76px + (100vw - 1920px) * 12 / 640), 88px);
+    --navigation-size: 18px;
+    --hero-size: 92px;
+    --hero-italic-size: 44px;
+    --section-size: 76px;
+    --feature-size: 94px;
+    --feature-leading: 92px;
+    --media-side-size: 84px;
+    --display-center-size: 108px;
+    --card-caption-size: 42px;
+    --card-overlay-size: 46px;
+    --nav-group-size: 28px;
+  }
+}
+@media (min-width: 2560px) {
+  :root {
+    --page-gutter: 88px;
+    --navigation-size: 18px;
+    --hero-size: 92px;
+    --hero-italic-size: 44px;
+    --section-size: 76px;
+    --feature-size: 94px;
+    --feature-leading: 92px;
+    --media-side-size: 84px;
+    --display-center-size: 108px;
+    --card-caption-size: 42px;
+    --card-overlay-size: 46px;
+    --nav-group-size: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root { --hero-leading: .98; --heading-leading: 1.02; --display-leading: 1; }
+}
+
+.heading-hero, .heading-section, .heading-feature, .heading-media-side,
+.heading-display-center, .heading-card-caption, .heading-card-overlay, .heading-nav-group {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
+.heading-hero { font-size: var(--hero-size); line-height: var(--hero-leading); letter-spacing: -.021em; }
+.heading-hero-italic { font: italic 400 var(--hero-italic-size)/1.12 var(--font-serif); letter-spacing: -.010em; }
+
+@media (min-width: 1024px) {
+  /* Calibrate the glyph scale without increasing the approved line boxes. */
+  .heading-hero-italic {
+    --hero-italic-growth: clamp(0px, calc((100vw - 1024px) * .04), calc(var(--hero-italic-size) * .5 + .5px));
+    font-size: calc(var(--hero-italic-size) + var(--hero-italic-growth));
+    line-height: calc(var(--hero-italic-size) * 1.12);
+  }
+}
+
+.heading-section { font-size: var(--section-size); line-height: var(--heading-leading); letter-spacing: -.022em; }
+.heading-feature { font-size: var(--feature-size); line-height: var(--feature-leading); letter-spacing: -.022em; }
+.heading-media-side { font-size: var(--media-side-size); line-height: var(--heading-leading); letter-spacing: -.022em; }
+.heading-display-center { font-size: var(--display-center-size); line-height: var(--display-leading); letter-spacing: -.022em; }
+.heading-card-caption, .heading-card-overlay { line-height: 1.12; letter-spacing: -.014em; }
+.heading-card-caption { font-size: var(--card-caption-size); }
+.heading-card-overlay { font-size: var(--card-overlay-size); }
+.heading-nav-group { font-size: var(--nav-group-size); line-height: 1.15; letter-spacing: -.014em; }
