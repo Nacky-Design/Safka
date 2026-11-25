@@ -6,10 +6,12 @@ const catalogItems = document.querySelector('#catalog-items');
 const desktop = matchMedia('(min-width: 1024px)');
 const hover = matchMedia('(hover: hover) and (pointer: fine)');
 let dismissedCatalog = false;
+let pinnedCatalog = false;
 
 function showCatalog(open) {
   catalogToggle.setAttribute('aria-expanded', String(open));
   catalogItems.hidden = !open;
+  if (!open) pinnedCatalog = false;
 }
 
 function showMenu(open) {
@@ -30,8 +32,9 @@ desktop.addEventListener('change', resetNavigation);
 
 menu.addEventListener('click', () => showMenu(menu.getAttribute('aria-expanded') === 'false'));
 catalogToggle.addEventListener('click', () => {
-  const open = catalogItems.hidden;
+  const open = desktop.matches ? !pinnedCatalog : catalogItems.hidden;
   dismissedCatalog = !open;
+  pinnedCatalog = open;
   showCatalog(open);
 });
 catalogToggle.addEventListener('keydown', (event) => {
@@ -47,7 +50,7 @@ catalog.addEventListener('pointerenter', () => {
 });
 catalog.addEventListener('pointerleave', () => {
   dismissedCatalog = false;
-  if (!catalog.contains(document.activeElement) || document.activeElement === catalogToggle) showCatalog(false);
+  if (!pinnedCatalog && !catalogItems.contains(document.activeElement)) showCatalog(false);
 });
 catalogToggle.addEventListener('focus', () => {
   if (desktop.matches && !dismissedCatalog && catalogToggle.matches(':focus-visible')) showCatalog(true);
@@ -84,27 +87,40 @@ document.addEventListener('keydown', (event) => {
 
 const video = document.querySelector('#hero-video');
 const videoToggle = document.querySelector('.video-toggle');
+const heroReduced = matchMedia('(prefers-reduced-motion: reduce)');
 videoToggle.hidden = false;
 
-function displayPlayback(playing) {
+function displayPlayback() {
+  const playing = !video.paused && !video.ended && !video.error;
   videoToggle.toggleAttribute('data-playing', playing);
   videoToggle.setAttribute('aria-label', playing ? 'Приостановить видео' : 'Воспроизвести видео');
 }
 
-videoToggle.addEventListener('click', async () => {
-  if (!video.paused) {
-    video.pause();
-    return;
-  }
-  try {
-    await video.play();
-  } catch {
-    displayPlayback(false);
-  }
+function startHero() {
+  video.play().catch(displayPlayback);
+}
+
+videoToggle.addEventListener('click', () => {
+  if (video.paused) startHero();
+  else video.pause();
 });
-video.addEventListener('playing', () => displayPlayback(true));
-video.addEventListener('pause', () => displayPlayback(false));
-video.addEventListener('ended', () => {
-  video.load();
-  displayPlayback(false);
+video.addEventListener('playing', () => {
+  if ('requestVideoFrameCallback' in video) {
+    video.requestVideoFrameCallback(() => { if (!video.error) video.dataset.ready = ''; });
+  } else {
+    video.dataset.ready = '';
+  }
+  displayPlayback();
 });
+for (const event of ['play', 'pause', 'ended', 'error']) {
+  video.addEventListener(event, displayPlayback);
+}
+video.addEventListener('error', () => { delete video.dataset.ready; });
+heroReduced.addEventListener('change', (event) => {
+  video.autoplay = !event.matches;
+  if (event.matches) video.pause();
+});
+if (!heroReduced.matches) {
+  video.autoplay = true;
+  startHero();
+}

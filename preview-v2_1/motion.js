@@ -57,6 +57,10 @@
   register('#production .production-steps li', 500, 14, 160, 70);
 
   register('#uses .use-card', 580, 18, 0, 85);
+  register('#buy h2', 540, 16);
+  register('#buy .retail-lead', 540, 16, 80);
+  register('#faq .questions-copy', 560, 16);
+  register('#faq .questions-list', 560, 16, 80);
   register('#partnership .partner-copy', 560, 16);
   register('#partnership .partner-fields', 620, 18, 90);
 

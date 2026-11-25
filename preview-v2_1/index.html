@@ -23,7 +23,7 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media">
-        <video id="hero-video" aria-hidden="true" muted playsinline preload="none"
+        <video id="hero-video" aria-hidden="true" muted loop playsinline preload="none"
           poster="assets/hero/hero_background_poster.png"
           src="assets/hero/hero_background_video.mp4"></video>
       </div>
@@ -43,19 +43,19 @@
             </button>
             <noscript><a href="#flavors">Продукция</a></noscript>
             <ul id="catalog-items" class="catalog-items" hidden>
-              <li><a href="#chicken">Куриный бульон</a></li>
-              <li><a href="#beef">Говяжий бульон</a></li>
-              <li><a href="#turkey">Бульон из индейки</a></li>
+              <li><a href="#chicken"><img src="assets/flavors/chicken_hover_poster.png" width="1176" height="784" alt=""><span>Куриный бульон</span></a></li>
+              <li><a href="#beef"><img src="assets/flavors/beef_hover_poster.png" width="1176" height="784" alt=""><span>Говяжий бульон</span></a></li>
+              <li><a href="#turkey"><img src="assets/flavors/turkey_hover_poster.png" width="1176" height="784" alt=""><span>Бульон из индейки</span></a></li>
             </ul>
           </div>
           <a class="nav-link" href="https://safka.ru/our_mission/">О компании</a>
           <a class="nav-link" href="https://safka.ru/blog/">Блог</a>
           <a class="nav-link" href="https://safka.ru/contact/">Сотрудничество</a>
         </nav>
-        <span class="button button-light buy-link" aria-disabled="true" role="link">
+        <a class="button button-light buy-link" href="#buy">
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
           Где купить
-        </span>
+        </a>
       </header>
       <div class="hero-copy">
         <h1 id="hero-title" class="heading-hero">
@@ -63,7 +63,7 @@
           <span>костный бульон,</span>
           <em class="heading-hero-italic"><span>который вкусно пить</span> <span>просто так</span></em>
         </h1>
-        <a class="button button-primary hero-cta" href="#flavors">
+        <a class="button button-primary button-accent hero-cta" href="#flavors">
           Наши бульоны
           <svg width="25" height="20" viewBox="0 0 25 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10h19m-6-5 6 5-6 5"/></svg>
         </a>
@@ -128,7 +128,6 @@
 
     <section id="company" class="batch-section story" aria-labelledby="story-title">
       <div class="story-copy">
-        <p class="story-kicker">О нас</p>
         <h2 id="story-title" class="heading-feature">Зачем мы<br>создали Сафку</h2>
         <p class="batch-lead">Мы верим, что по-настоящему хороший бульон — это основа вкусной и полезной еды на каждый день. Поэтому мы сделали Сафку: натуральный костный бульон, который экономит ваше время и сохраняет всё важное от природы.</p>
         <a class="button button-primary batch-cta" href="https://safka.ru/our_mission/">Наша история <span aria-hidden="true">→</span></a>
@@ -138,7 +137,11 @@
     </section>
 
     <section id="production" class="batch-section production" aria-labelledby="production-title">
-      <img class="production-shell" src="assets/approved-details/production-shell.png" width="900" height="942" alt="Медная кастрюля">
+      <div class="production-visual">
+        <img class="production-shell" src="assets/approved-details/production-shell.png" width="900" height="942" alt="Медная кастрюля">
+        <video class="story-film" id="story-film" src="assets/production/food-film.mp4"
+          poster="assets/production/first-frame.webp" preload="none" muted playsinline aria-hidden="true"></video>
+      </div>
       <div class="production-copy">
         <h2 id="production-title" class="heading-media-side">Как мы это делаем</h2>
         <p class="batch-lead">Классические принципы приготовления бульона и современные технологии производства.</p>
@@ -148,7 +151,7 @@
           <li><img src="assets/approved-details/quality.png" alt="">Контроль<br>качества</li>
           <li><img src="assets/approved-details/carton.png" alt="">Надёжная<br>упаковка</li>
         </ul>
-        <button type="button" class="button batch-cta production-action" disabled>Смотреть производство</button>
+        <button type="button" class="button button-light batch-cta production-action" aria-controls="story-film">Смотреть ролик Safka</button>
       </div>
     </section>
 
@@ -180,13 +183,18 @@
     <section id="buy" class="batch-section retail" aria-labelledby="retail-title">
       <h2 id="retail-title" class="heading-display-center">Где купить</h2>
       <p class="retail-lead">Бульон Safka представлен в крупных торговых сетях и онлайн-магазинах.</p>
-      <div class="retail-window">
+      <div class="retail-window" role="region" aria-label="Логотипы сетей, группы компаний и маркетплейсов">
         <div class="retail-track">
-          <ul class="retail-list" aria-label="Торговые сети">
+          <ul class="retail-list">
             <li><img src="assets/retail/auchan_reference_normalized.png" alt="Ашан" width="300" height="110"></li>
             <li><img src="assets/retail/magnit_reference_normalized.png" alt="Магнит" width="300" height="110"></li>
             <li><img src="assets/retail/lenta_reference_normalized.png" alt="Лента" width="300" height="110"></li>
             <li><img src="assets/retail/pyaterochka_reference_normalized.png" alt="Пятёрочка" width="300" height="110"></li>
+            <li class="retail-added"><img src="assets/retail/vkusvill.svg" alt="ВкусВилл, торговая сеть"></li>
+            <li class="retail-added"><img src="assets/retail/x5.svg" alt="X5 Group, группа компаний"></li>
+            <li class="retail-added"><img src="assets/retail/yandex-market.svg" alt="Яндекс Маркет, маркетплейс"></li>
+            <li class="retail-added"><img src="assets/retail/wildberries.svg" alt="Wildberries, маркетплейс"></li>
+            <li class="retail-added"><img src="assets/retail/ozon.svg" alt="Ozon, маркетплейс"></li>
           </ul>
         </div>
         <button class="retail-pause" type="button" aria-pressed="false" hidden>Пауза прокрутки</button>

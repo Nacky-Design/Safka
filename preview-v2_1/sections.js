@@ -72,6 +72,42 @@
     if (document.hidden) stopUse();
   });
 
+  const film = document.querySelector('#story-film');
+  const filmControl = document.querySelector('.production-action');
+
+  function updateFilm() {
+    filmControl.textContent = film.paused || film.ended
+      ? 'Смотреть ролик Safka' : 'Приостановить ролик Safka';
+  }
+
+  filmControl.addEventListener('click', () => {
+    if (film.paused) {
+      const rect = film.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > innerHeight) film.scrollIntoView({ block: 'nearest' });
+      film.play().catch(updateFilm);
+    } else {
+      film.pause();
+    }
+  });
+  film.addEventListener('playing', updateFilm);
+  film.addEventListener('pause', updateFilm);
+  film.addEventListener('ended', () => {
+    film.load();
+    updateFilm();
+  });
+  film.addEventListener('error', () => {
+    film.dataset.unavailable = '';
+    updateFilm();
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) film.pause();
+    }).observe(film);
+  }
+  reduced.addEventListener('change', (event) => {
+    if (event.matches) film.pause();
+  });
+
   const windowElement = document.querySelector('.retail-window');
   const track = windowElement.querySelector('.retail-track');
   const pause = windowElement.querySelector('.retail-pause');
@@ -89,6 +125,8 @@
     windowElement.toggleAttribute('data-motion', !reduced.matches);
     if (!reduced.matches) windowElement.scrollLeft = 0;
     pause.hidden = reduced.matches;
+    if (reduced.matches) windowElement.tabIndex = 0;
+    else windowElement.removeAttribute('tabindex');
   }
 
   function toggleTrack() {
