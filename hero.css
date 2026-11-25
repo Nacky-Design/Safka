@@ -156,6 +156,9 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
     --sticky-height: 68px;
     --header-logo-width: clamp(79px, 8.4vw, 164px);
     --header-top-inset: clamp(14px, 1.57vw, 31px);
+    --header-nav-offset: 3px;
+    --header-buy-height: clamp(44px, 3.4vw, 62px);
+    --sticky-buy-scale: .84;
     --safka-header-size: calc(var(--header-top-inset) + var(--header-logo-width) / 1.32);
   }
 
@@ -202,7 +205,7 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
     align-items: center;
     justify-content: center;
     gap: clamp(17px, 3.45vw, 68px);
-    margin-block-start: 3px;
+    margin-block-start: var(--header-nav-offset);
     margin-inline-start: -4.4vw;
     padding: 0;
     overflow: visible;
@@ -219,12 +222,12 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   }
   .hero-header[data-scrolled] .buy-link {
     translate: none;
-    transform: translateY(calc(20px - var(--header-top-inset))) scale(.84);
+    transform: translateY(calc(20px - var(--header-top-inset))) scale(var(--sticky-buy-scale));
     transform-origin: right top;
   }
   .buy-link {
     justify-self: end;
-    min-block-size: clamp(44px, 3.4vw, 62px);
+    min-block-size: var(--header-buy-height);
     min-inline-size: clamp(124px, 10.2vw, 184px);
     translate: calc(var(--header-right-inset) - var(--hero-right-axis)) 0;
   }
@@ -305,8 +308,9 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   .catalog-panel {
     position: absolute;
     inset-block-start: calc(var(--header-top-inset) + clamp(48px, 3.4vw, 62px) + 5px);
-    inset-inline-end: var(--hero-right-axis);
+    inset-inline: 0;
     inline-size: clamp(590px, 48vw, 860px);
+    margin-inline: auto;
     max-block-size: calc(100svh - 112px);
     overflow: auto;
     overscroll-behavior: contain;
@@ -331,8 +335,28 @@ html { scroll-padding-block-start: calc(var(--sticky-top) + var(--sticky-height)
   .catalog-pack { inline-size: auto; max-inline-size: 100%; block-size: 100%; align-self: end; }
 }
 
-@media (1024px <= width < 1280px) {
+@media (1024px <= width <= 1440px) {
+  .hero-header[data-scrolled] {
+    --sticky-center: calc(var(--sticky-top) + var(--sticky-height) / 2);
+    --sticky-logo-scale: .5;
+  }
+
   .hero-header[data-scrolled] .brand {
-    transform: translateY(calc(17px - var(--header-top-inset))) scale(.66);
+    transform: translateY(calc(var(--sticky-center) - var(--header-top-inset) + 1px
+      - var(--header-logo-width) / 1.32 * var(--sticky-logo-scale) / 2)) scale(var(--sticky-logo-scale));
+  }
+  .hero-header[data-scrolled] :is(.catalog-toggle, .nav-link) {
+    transform: translateY(calc(var(--sticky-center) - var(--header-top-inset)
+      - var(--header-nav-offset) - var(--control-min) / 2));
+  }
+  .hero-header[data-scrolled] .buy-link {
+    transform: translateY(calc(var(--sticky-center) - var(--header-top-inset)
+      - var(--header-buy-height) * var(--sticky-buy-scale) / 2)) scale(var(--sticky-buy-scale));
+  }
+}
+
+@media (1024px <= width < 1280px) {
+  .hero-header[data-scrolled] {
+    --sticky-logo-scale: .66;
   }
 }

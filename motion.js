@@ -81,11 +81,23 @@
     retailObserver.observe(retail);
   }
 
-  for (const details of document.querySelectorAll('#faq details')) {
+  const mobile = matchMedia('(width < 1001px)');
+  const faq = document.querySelector('.questions-list');
+  for (const details of faq.querySelectorAll('details')) {
     const summary = details.querySelector('summary');
     const answer = details.querySelector('p');
     let wasOpen = details.open;
     summary.setAttribute('aria-expanded', String(wasOpen));
+    summary.addEventListener('click', () => {
+      const previous = faq.querySelector('details[open]');
+      if (!mobile.matches || details.open || !previous ||
+          !(previous.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING)) return;
+      const before = summary.getBoundingClientRect().top;
+      requestAnimationFrame(() => {
+        const delta = summary.getBoundingClientRect().top - before;
+        if (details.open && Math.abs(delta) > 1) scrollBy({ top: delta, behavior: 'instant' });
+      });
+    });
     details.addEventListener('toggle', () => {
       if (wasOpen === details.open) return;
       wasOpen = details.open;

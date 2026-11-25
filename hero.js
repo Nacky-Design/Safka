@@ -12,6 +12,7 @@ const navigation = document.querySelector('#primary-nav');
 const catalog = document.querySelector('.catalog');
 const catalogToggle = document.querySelector('.catalog-toggle');
 const catalogItems = document.querySelector('#catalog-items');
+const pageContent = document.querySelectorAll('main, .site-footer');
 const desktop = matchMedia('(min-width: 1024px)');
 const hover = matchMedia('(hover: hover) and (pointer: fine)');
 let dismissedCatalog = false;
@@ -28,7 +29,13 @@ function showCatalog(open) {
 function showMenu(open) {
   menu.setAttribute('aria-expanded', String(open));
   navigation.hidden = !desktop.matches && !open;
+  const mobileOpen = !desktop.matches && open;
+  for (const region of pageContent) region.inert = mobileOpen;
   if (!open) showCatalog(false);
+  if (mobileOpen) {
+    navigation.scrollTop = 0;
+    catalogToggle.focus({ preventScroll: true });
+  }
 }
 
 function resetNavigation() {
@@ -71,9 +78,9 @@ catalogToggle.addEventListener('focus', () => {
   if (desktop.matches && !dismissedCatalog && catalogToggle.matches(':focus-visible')) showCatalog(true);
 });
 catalog.addEventListener('focusout', ({ relatedTarget }) => {
-  if (!catalog.contains(relatedTarget)) {
+  if (desktop.matches && !catalog.contains(relatedTarget)) {
     dismissedCatalog = false;
-    if (!desktop.matches || !hover.matches || !catalog.matches(':hover')) showCatalog(false);
+    if (!hover.matches || !catalog.matches(':hover')) showCatalog(false);
   }
 });
 catalogItems.addEventListener('click', ({ target }) => {
@@ -83,7 +90,12 @@ catalogItems.addEventListener('click', ({ target }) => {
   document.querySelector(link.hash)?.focus({ preventScroll: true });
 });
 document.addEventListener('pointerdown', ({ target }) => {
+  if (!desktop.matches) return;
   if (!catalog.contains(target)) showCatalog(false);
+  if (!navigation.contains(target) && !menu.contains(target)) showMenu(false);
+});
+document.addEventListener('click', ({ target }) => {
+  if (desktop.matches || navigation.hidden) return;
   if (!navigation.contains(target) && !menu.contains(target)) showMenu(false);
 });
 document.addEventListener('keydown', (event) => {
