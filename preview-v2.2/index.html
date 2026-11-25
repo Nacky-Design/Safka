@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сафка — натуральный костный бульон</title>
+  <link rel="preload" href="assets/fonts/safka-serif-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/safka-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/alegreya-sans-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/alegreya-sans-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/alegreya-sans-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/alegreya-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="foundation.css">
+  <link rel="stylesheet" href="hero.css">
+  <script src="hero.js" defer></script>
+  <link rel="stylesheet" href="flavors.css">
+  <script src="flavors.js" defer></script>
+  <link rel="stylesheet" href="sections.css">
+  <script src="sections.js" defer></script>
+  <script src="motion.js" defer blocking="render"></script>
+</head>
+<body>
+  <header class="hero-header">
+    <a class="brand" href="#top" aria-label="Сафка — главная">
+      <img src="assets/hero/logo.svg" alt="" width="297" height="210">
+    </a>
+    <button class="button button-light menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primary-nav" hidden>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav id="primary-nav" class="navigation" aria-label="Основная навигация">
+      <div class="catalog" id="catalog">
+        <button class="catalog-toggle" type="button" aria-expanded="false" aria-controls="catalog-items" hidden>
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor"><path d="M0 0h8v8H0zm12 0h8v8h-8zM0 12h8v8H0zm12 0h8v8h-8z"/></svg>
+          <span>Продукция</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m2 4 4 4 4-4"/></svg>
+        </button>
+        <noscript><a href="#flavors">Продукция</a></noscript>
+        <div id="catalog-items" class="catalog-panel" hidden>
+          <p class="catalog-heading">Каталог</p>
+          <ul class="catalog-items">
+            <li>
+              <a class="catalog-card catalog-chicken" href="#chicken">
+                <span>Куриный бульон</span>
+                <svg class="catalog-pack" viewBox="224 47 322 633" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-chicken"><path d="M228 64 Q260 52 463 50 L540 59 541 641 325 675 229 641Z"/></clipPath></defs>
+                  <image href="assets/flavors/chicken_hover_poster.png" width="1176" height="784" clip-path="url(#catalog-pack-chicken)"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="catalog-card catalog-beef" href="#beef">
+                <span>Говяжий бульон</span>
+                <svg class="catalog-pack" viewBox="246 64 503 822" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-beef"><path d="M249 82 Q298 74 584 67 Q651 66 729 88 Q751 94 745 106 L714 165 715 840 380 883 250 846Z"/></clipPath></defs>
+                  <image href="assets/flavors/beef_hover_poster.png" width="1536" height="1024" clip-path="url(#catalog-pack-beef)"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="catalog-card catalog-turkey" href="#turkey">
+                <span>Бульон из индейки</span>
+                <svg class="catalog-pack" viewBox="188 49 389 630" aria-hidden="true">
+                  <defs><clipPath id="catalog-pack-turkey"><path d="M192 65 Q280 52 479 52 Q543 55 572 69 Q575 73 571 83 L545 131 542 643 270 675 193 649Z"/></clipPath></defs>
+                  <image href="assets/flavors/turkey_hover_poster.png" width="1176" height="784" clip-path="url(#catalog-pack-turkey)"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a class="nav-link" href="https://safka.ru/our_mission/">О компании</a>
+      <a class="nav-link" href="https://safka.ru/blog/">Блог</a>
+      <a class="nav-link" href="https://safka.ru/contact/">Сотрудничество</a>
+    </nav>
+    <a class="button button-light buy-link" href="#buy">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+      Где купить
+    </a>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <video id="hero-video" aria-hidden="true" muted loop playsinline preload="none"
+          poster="assets/hero/hero_background_poster.png"
+          src="assets/hero/hero_background_video.mp4"></video>
+      </div>
+      <div class="hero-copy">
+        <h1 id="hero-title" class="heading-hero">
+          <span class="hero-heading-accent">Натуральный</span>
+          <span>костный бульон,</span>
+          <em class="heading-hero-italic"><span>который вкусно пить</span> <span>просто так</span></em>
+        </h1>
+        <a class="button button-primary hero-cta" href="#flavors">
+          Наши бульоны
+          <svg width="25" height="20" viewBox="0 0 25 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10h19m-6-5 6 5-6 5"/></svg>
+        </a>
+      </div>
+      <button class="button button-light video-toggle" type="button" aria-controls="hero-video" aria-label="Воспроизвести видео" hidden>
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
+          <path class="play-icon" d="M6 3.5 16 10 6 16.5Z"/>
+          <path class="pause-icon" d="M5 4h3.5v12H5zm6.5 0H15v12h-3.5z"/>
+        </svg>
+      </button>
+    </section>
+
+    <section id="flavors" class="flavor-peek" aria-labelledby="flavors-title">
+      <h2 id="flavors-title" class="flavor-section-title heading-section">Наши бульоны</h2>
+      <article class="flavor-card" id="chicken" aria-labelledby="chicken-title" tabindex="-1">
+        <div class="flavor-media" role="group" aria-labelledby="chicken-title">
+          <img src="assets/flavors/chicken_hover_poster.png" width="1176" height="784" alt="">
+          <video id="chicken-video" src="assets/flavors/chicken_hover_video.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+        <div class="flavor-caption">
+          <h3 id="chicken-title" class="heading-card-caption">Куриный бульон</h3>
+          <p>Разогрейте и налейте в чашку.</p>
+          <button class="flavor-arrow" type="button" disabled aria-label="Подробнее о вкусе" aria-describedby="chicken-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h13m-5-5 5 5-5 5"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+      <article class="flavor-card" id="beef" aria-labelledby="beef-title" tabindex="-1">
+        <div class="flavor-media" role="group" aria-labelledby="beef-title">
+          <img src="assets/flavors/beef_hover_poster.png" width="1536" height="1024" alt="">
+          <video id="beef-video" src="assets/flavors/beef_hover_video.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+        <div class="flavor-caption">
+          <h3 id="beef-title" class="heading-card-caption">Говяжий бульон</h3>
+          <p>Для супов и рагу или в качестве горячего бульона.</p>
+          <button class="flavor-arrow" type="button" disabled aria-label="Подробнее о вкусе" aria-describedby="beef-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h13m-5-5 5 5-5 5"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+      <article class="flavor-card" id="turkey" aria-labelledby="turkey-title" tabindex="-1">
+        <div class="flavor-media" role="group" aria-labelledby="turkey-title">
+          <img src="assets/flavors/turkey_hover_poster.png" width="1176" height="784" alt="">
+          <video id="turkey-video" src="assets/flavors/turkey_hover_video.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+        <div class="flavor-caption">
+          <h3 id="turkey-title" class="heading-card-caption">Бульон из индейки</h3>
+          <p>Основа для супов с овощами и зеленью.</p>
+          <button class="flavor-arrow" type="button" disabled aria-label="Подробнее о вкусе" aria-describedby="turkey-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h13m-5-5 5 5-5 5"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <section id="company" class="batch-section story" aria-labelledby="story-title">
+      <div class="story-copy">
+        <h2 id="story-title" class="heading-feature">Зачем мы<br>создали Сафку</h2>
+        <p class="batch-lead">Мы верим, что по-настоящему хороший бульон — это основа вкусной и полезной еды на каждый день. Поэтому мы сделали Сафку: натуральный костный бульон, который экономит ваше время и сохраняет всё важное от природы.</p>
+        <a class="button button-primary batch-cta" href="https://safka.ru/our_mission/">Наша история <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="story-mark signature" aria-hidden="true"><img src="assets/hero/logo.svg" alt=""></div>
+      <img class="story-engraving" src="assets/engraving/pasture_story_engraving.png" width="2172" height="724" alt="">
+    </section>
+
+    <section id="production" class="batch-section production" aria-labelledby="production-title">
+      <div class="production-visual">
+        <img class="production-shell" src="assets/approved-details/production-shell.png" width="900" height="942" alt="Медная кастрюля">
+        <svg class="production-mask" width="0" height="0" aria-hidden="true">
+          <defs>
+            <clipPath id="production-window" clipPathUnits="objectBoundingBox">
+              <path d="M.009 .32 Q.007 .088 .13 .052 C.26 -.003 .69 -.008 .864 .025 Q.992 .043 .996 .302 L.996 .749 Q.994 .902 .932 .936 C.832 .991 .307 1.005 .105 .981 Q.003 .957 .006 .815 Z"/>
+            </clipPath>
+          </defs>
+        </svg>
+        <video class="story-film" id="story-film" src="assets/production/food-film.mp4"
+          poster="assets/production/first-frame.webp" preload="none" muted loop playsinline aria-hidden="true"></video>
+      </div>
+      <div class="production-copy">
+        <h2 id="production-title" class="heading-media-side">Как мы это делаем</h2>
+        <p class="batch-lead">Классические принципы приготовления бульона и современные технологии производства.</p>
+        <ul class="production-steps">
+          <li><img src="assets/approved-details/ingredients.png" alt="">Отборные<br>ингредиенты</li>
+          <li><img src="assets/approved-details/simmer.png" alt="">Длительное<br>томление</li>
+          <li><img src="assets/approved-details/quality.png" alt="">Контроль<br>качества</li>
+          <li><img src="assets/approved-details/carton.png" alt="">Надёжная<br>упаковка</li>
+        </ul>
+        <button type="button" class="button button-light batch-cta production-action" aria-controls="story-film">Смотреть ролик Safka</button>
+      </div>
+    </section>
+
+    <section id="uses" class="batch-section uses" aria-labelledby="uses-title">
+      <h2 id="uses-title" class="heading-section">Как использовать бульон</h2>
+      <p class="uses-lead">Простая основа для множества вкусных и полезных блюд.</p>
+      <div class="uses-grid">
+        <article class="use-card" aria-labelledby="use-cup-title">
+          <img class="use-poster" src="assets/uses/cup_hover_poster.png" alt="" width="1244" height="1660">
+          <video class="use-video" src="assets/uses/cup_hover_video.mp4" preload="none" muted playsinline aria-hidden="true"></video>
+          <h3 id="use-cup-title" class="heading-card-overlay">Налить в чашку</h3>
+          <div class="use-info"><img src="assets/approved-details/cup.png" alt=""><p>Разогрейте бульон и пейте горячим.</p></div>
+        </article>
+        <article class="use-card" aria-labelledby="use-soup-title">
+          <img class="use-poster" src="assets/uses/soup_hover_poster.png" alt="" width="1244" height="1660">
+          <video class="use-video" src="assets/uses/soup_hover_video.mp4" preload="none" muted playsinline aria-hidden="true"></video>
+          <h3 id="use-soup-title" class="heading-card-overlay">Взять за основу<br>супа</h3>
+          <div class="use-info"><img src="assets/approved-details/soup.png" alt=""><p>Добавьте овощи, крупу или лапшу.</p></div>
+        </article>
+        <article class="use-card" aria-labelledby="use-sauce-title">
+          <img class="use-poster" src="assets/uses/sauce_hover_poster.png" alt="" width="1244" height="1660">
+          <video class="use-video" src="assets/uses/sauce_hover_video.mp4" preload="none" muted playsinline aria-hidden="true"></video>
+          <h3 id="use-sauce-title" class="heading-card-overlay">Добавить в соус</h3>
+          <div class="use-info"><img src="assets/approved-details/sauce.png" alt=""><p>Замените бульоном часть жидкости для более насыщенного вкуса.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="buy" class="batch-section retail" aria-labelledby="retail-title">
+      <h2 id="retail-title" class="heading-display-center">Где купить</h2>
+      <p class="retail-lead">Бульон Safka представлен в крупных торговых сетях и онлайн-магазинах.</p>
+      <div class="retail-window" role="region" aria-label="Логотипы сетей, группы компаний и маркетплейсов">
+        <div class="retail-track">
+          <ul class="retail-list">
+            <li><img src="assets/retail/auchan_reference_normalized.png" alt="Ашан" width="300" height="110"></li>
+            <li><img src="assets/retail/magnit_reference_normalized.png" alt="Магнит" width="300" height="110"></li>
+            <li><img src="assets/retail/lenta_reference_normalized.png" alt="Лента" width="300" height="110"></li>
+            <li><img src="assets/retail/pyaterochka_reference_normalized.png" alt="Пятёрочка" width="300" height="110"></li>
+            <li class="retail-added"><img src="assets/retail/vkusvill.svg" alt="ВкусВилл, торговая сеть"></li>
+            <li class="retail-added"><img src="assets/retail/x5.svg" alt="X5 Group, группа компаний"></li>
+            <li class="retail-added"><img src="assets/retail/yandex-market.svg" alt="Яндекс Маркет, маркетплейс"></li>
+            <li class="retail-added"><img src="assets/retail/wildberries.svg" alt="Wildberries, маркетплейс"></li>
+            <li class="retail-added"><img src="assets/retail/ozon.svg" alt="Ozon, маркетплейс"></li>
+          </ul>
+        </div>
+        <button class="retail-pause" type="button" aria-pressed="false" hidden>Пауза прокрутки</button>
+      </div>
+      <img class="retail-engraving" src="assets/engraving/retail_shop_engraving.png" width="2172" height="724" alt="">
+    </section>
+
+    <section id="partnership" class="batch-section partnership" aria-labelledby="partner-title">
+      <div class="partner-copy">
+        <h2 id="partner-title" class="heading-feature">Давайте<br>сотрудничать</h2>
+        <p class="batch-lead">Станьте партнёром Safka — добавьте в ассортимент натуральный костный бульон.</p>
+      </div>
+      <form class="partner-fields" aria-labelledby="partner-title">
+        <div class="partner-field">
+          <label class="batch-visually-hidden" for="partner-company">Название компании</label>
+          <input id="partner-company" name="company" autocomplete="organization" placeholder="Название компании *" aria-describedby="partner-company-error" required>
+          <span id="partner-company-error" class="batch-visually-hidden" aria-live="polite" hidden></span>
+        </div>
+        <div class="partner-field">
+          <label class="batch-visually-hidden" for="partner-name">Контактное лицо</label>
+          <input id="partner-name" name="name" autocomplete="name" placeholder="Контактное лицо *" aria-describedby="partner-name-error" required>
+          <span id="partner-name-error" class="batch-visually-hidden" aria-live="polite" hidden></span>
+        </div>
+        <div class="partner-field">
+          <label class="batch-visually-hidden" for="partner-contact">Телефон или e-mail</label>
+          <input id="partner-contact" name="contact" autocomplete="off" placeholder="Телефон или e-mail *" aria-describedby="partner-contact-error" required>
+          <span id="partner-contact-error" class="batch-visually-hidden" aria-live="polite" hidden></span>
+        </div>
+        <div class="partner-field">
+          <label class="batch-visually-hidden" for="partner-message">Ваш запрос</label>
+          <textarea id="partner-message" name="message" placeholder="Ваш запрос" rows="3"></textarea>
+        </div>
+        <button class="button button-primary batch-cta" type="submit" disabled aria-label="Отправить заявку, отправка пока недоступна">Отправить заявку</button>
+        <p class="partner-feedback" aria-hidden="true" hidden></p>
+      </form>
+    </section>
+
+    <section id="faq" class="batch-section questions" aria-labelledby="faq-title">
+      <div class="questions-copy">
+        <h2 id="faq-title" class="heading-feature">Частые<br>вопросы</h2>
+        <p class="batch-lead">Отвечаем на популярные вопросы о составе, хранении, доставке и сотрудничестве.</p>
+      </div>
+      <div class="questions-list">
+        <details name="safka-faq" open>
+          <summary aria-controls="faq-answer-ingredients">Из чего состоит бульон Safka?</summary>
+          <p id="faq-answer-ingredients">Состав зависит от вкуса. Перечень ингредиентов указан на упаковке выбранного бульона.</p>
+        </details>
+        <details name="safka-faq">
+          <summary aria-controls="faq-answer-storage">Как хранить бульон?</summary>
+          <p id="faq-answer-storage">Условия хранения закрытой упаковки указаны на ней.</p>
+        </details>
+        <details name="safka-faq">
+          <summary aria-controls="faq-answer-opened">Сколько хранится после вскрытия?</summary>
+          <p id="faq-answer-opened">Срок хранения после вскрытия смотрите на упаковке выбранного бульона.</p>
+        </details>
+        <details name="safka-faq">
+          <summary aria-controls="faq-answer-delivery">Есть ли доставка для оптовых партнёров?</summary>
+          <p id="faq-answer-delivery">Условия поставок можно уточнить <a href="https://safka.ru/contact/">у команды Safka</a>.</p>
+        </details>
+        <details name="safka-faq">
+          <summary aria-controls="faq-answer-partnership">Как начать сотрудничество?</summary>
+          <p id="faq-answer-partnership">Свяжитесь с командой Safka через <a href="https://safka.ru/contact/">страницу контактов</a>.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="batch-section site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="signature footer-mark" href="#top" aria-label="Сафка — главная"><img src="assets/hero/logo.svg" alt=""></a>
+        <p>Натуральный<br>костный бульон</p>
+        <ul class="footer-social" aria-label="Социальные сети">
+          <li><span role="link" aria-disabled="true" aria-label="Telegram"><img src="assets/approved-details/telegram.png" alt=""></span></li>
+          <li><span role="link" aria-disabled="true" aria-label="MAX"><img src="assets/approved-details/max.png" alt=""></span></li>
+          <li><span role="link" aria-disabled="true" aria-label="VK"><img src="assets/approved-details/vk.png" alt=""></span></li>
+        </ul>
+      </div>
+      <nav class="footer-nav" aria-label="Разделы сайта">
+        <div>
+          <h2 class="heading-nav-group">Продукция</h2>
+          <ul><li><a href="#flavors">Наши бульоны</a></li><li><a href="#faq">Состав и польза</a></li><li><a href="#uses">Как использовать</a></li></ul>
+        </div>
+        <div>
+          <h2 class="heading-nav-group">О компании</h2>
+          <ul><li><a href="#company">История Safka</a></li><li><a href="#production">Производство</a></li><li><a href="#production">Качество</a></li></ul>
+        </div>
+        <div>
+          <h2 class="heading-nav-group"><a href="https://safka.ru/blog/">Блог</a></h2>
+          <ul><li>Рецепты</li><li>Статьи о питании</li><li>Новости</li></ul>
+        </div>
+        <div>
+          <h2 class="heading-nav-group">Сотрудничество</h2>
+          <ul><li><a href="#partnership">Стать партнёром</a></li><li><a href="https://safka.ru/contact/">Оптовые поставки</a></li><li><a href="https://safka.ru/contact/">Коммерческое предложение</a></li></ul>
+        </div>
+      </nav>
+      <div class="footer-buy">
+        <a class="button button-primary batch-cta" href="#buy">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          Где купить
+        </a>
+        <p>Найдите Safka<br>в магазинах рядом с вами</p>
+      </div>
+    </div>
+    <img class="footer-engraving" src="assets/engraving/footer_farm_engraving.png" alt="" width="2172" height="724">
+    <div class="footer-bottom">
+      <p>© 2026 Safka. Все права защищены.</p>
+      <span role="link" aria-disabled="true">Политика конфиденциальности</span>
+      <span role="link" aria-disabled="true">Пользовательское соглашение</span>
+      <p class="footer-natural"><img src="assets/approved-details/leaf.png" alt="">Натуральный продукт</p>
+    </div>
+  </footer>
+</body>
+</html>
